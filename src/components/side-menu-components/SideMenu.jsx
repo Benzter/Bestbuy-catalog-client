@@ -3,9 +3,12 @@ import SideMenuTitle from "./SideMenuTitle";
 import SideMenuRadio from "./SideMenuRadio";
 import PriceFilter from "./PriceFilter";
 
-export default function SideMenu({ products, productFilter }) {
+export default function SideMenu({ products, productFilter, filterReset }) {
   const brandArray = [];
-  // let uniqueBrandSet;
+  const [brand, setBrand] = useState(null);
+  const [min, setMin] = useState(null);
+  const [max, setMax] = useState(null);
+
   const [uniqueBrandSet, setUniqueBrandSet] = useState(new Set());
   useEffect(() => {
     function filterBrand() {
@@ -20,9 +23,12 @@ export default function SideMenu({ products, productFilter }) {
 
   function getFormValues(event) {
     event.preventDefault();
-    const brand = event.target.brand.value;
-    const min = event.target.min.value;
-    const max = event.target.max.value;
+    // const brand = event.target.brand.value;
+    // const min = event.target.min.value;
+    // const max = event.target.max.value;
+    setBrand(event.target.brand.value);
+    setMin(event.target.min.value);
+    setMax(event.target.max.value);
 
     productFilter(brand, min, max);
     // console.log("brand value", event.target.brand.value);
@@ -30,20 +36,20 @@ export default function SideMenu({ products, productFilter }) {
     // console.log(event.target.max.value);
   }
 
+  // function resetFilter() {
+  //   console.log("filter remove");
+  //   setBrand(null);
+  //   setMin(null);
+  //   setMax(null);
+  //   productFilter(brand, min, max);
+  // }
+
   return (
     <div className="col-3 rounded">
       <div className="bg-light p-3">
         <form onSubmit={getFormValues}>
           <div>
             <SideMenuTitle>Brand</SideMenuTitle>
-            {/* <SideMenuRadio
-              id="all"
-              brand="all"
-              name="brand"
-              value="All"
-              className="d-none"
-              checked
-            /> */}
             {Array.from(uniqueBrandSet).map((brand, index) => (
               <SideMenuRadio
                 id={index}
@@ -55,7 +61,7 @@ export default function SideMenu({ products, productFilter }) {
             ))}
           </div>
           <SideMenuTitle className="pt-5">Price</SideMenuTitle>
-          <PriceFilter />
+          <PriceFilter filterReset={filterReset} />
         </form>
       </div>
     </div>

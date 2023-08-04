@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function PriceFilter() {
+export default function PriceFilter(props) {
   // const [minValue, setMinValue] = useState(0);
   // const [maxValue, setMaxValue] = useState(999);
 
@@ -39,9 +39,27 @@ export default function PriceFilter() {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary px-5 py-2 mt-2 my-3">
+      {/* <button
+        type="submit"
+        className="btn btn-primary px-4  py-2 mt-2  my-3 mr-2"
+      >
         Filter
       </button>
+      <button type="submit" className="btn btn-primary px-4 py-2 mt-2 my-3">
+        Clear
+      </button> */}
+      <div class="button-container mt-4">
+        <button type="submit" class="btn btn-primary button me-2 px-4">
+          Filter
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary button ms-2 px-4"
+          onClick={props.filterReset}
+        >
+          reset
+        </button>
+      </div>
     </div>
   );
 }
