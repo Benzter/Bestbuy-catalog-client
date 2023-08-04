@@ -39,15 +39,6 @@ export default function PriceFilter(props) {
         />
       </div>
 
-      {/* <button
-        type="submit"
-        className="btn btn-primary px-4  py-2 mt-2  my-3 mr-2"
-      >
-        Filter
-      </button>
-      <button type="submit" className="btn btn-primary px-4 py-2 mt-2 my-3">
-        Clear
-      </button> */}
       <div class="button-container mt-4">
         <button type="submit" class="btn btn-primary button me-2 px-4">
           Filter

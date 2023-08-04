@@ -23,26 +23,12 @@ export default function SideMenu({ products, productFilter, filterReset }) {
 
   function getFormValues(event) {
     event.preventDefault();
-    // const brand = event.target.brand.value;
-    // const min = event.target.min.value;
-    // const max = event.target.max.value;
     setBrand(event.target.brand.value);
     setMin(event.target.min.value);
     setMax(event.target.max.value);
 
     productFilter(brand, min, max);
-    // console.log("brand value", event.target.brand.value);
-    // console.log(event.target.min.value);
-    // console.log(event.target.max.value);
   }
-
-  // function resetFilter() {
-  //   console.log("filter remove");
-  //   setBrand(null);
-  //   setMin(null);
-  //   setMax(null);
-  //   productFilter(brand, min, max);
-  // }
 
   return (
     <div className="col-3 rounded">

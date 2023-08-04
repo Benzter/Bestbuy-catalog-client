@@ -46,24 +46,9 @@ export default function ProductPage() {
     if (max) setMax(max);
   };
 
-  //let filteredProducts;
-
   const filterReset = () => {
-    console.log("filter off");
     setFilterOn(false);
   };
-
-  // filteredProducts = filterBrand
-  //   ? products.filter((product) => product.brand === filterBrand)
-  //   : products;
-
-  // filteredProducts = min
-  //   ? filteredProducts.filter((product) => product.price > min)
-  //   : filteredProducts;
-
-  // filteredProducts = max
-  //   ? filteredProducts.filter((product) => product.price < max)
-  //   : filteredProducts;
 
   useEffect(() => {
     let filteredProducts = products;
