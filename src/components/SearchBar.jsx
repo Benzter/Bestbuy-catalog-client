@@ -5,7 +5,6 @@ export default function SearchBar(props) {
 
   function searchBarHandler() {
     if (searchTerm == "") {
-      console.log(searchTerm);
       props.getSearchProduct(searchTerm);
     }
   }
@@ -14,7 +13,6 @@ export default function SearchBar(props) {
     event.preventDefault();
 
     props.getSearchProduct(searchTerm);
-    console.log("good");
   }
 
   return (
