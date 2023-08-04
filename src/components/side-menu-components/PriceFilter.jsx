@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 export default function PriceFilter(props) {
-  // const [minValue, setMinValue] = useState(0);
-  // const [maxValue, setMaxValue] = useState(999);
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(1999);
 
   return (
     <div>
@@ -14,12 +14,12 @@ export default function PriceFilter(props) {
           type="number"
           name="min"
           className="form-control"
-          // value={minValue}
+          value={minValue}
           aria-label="Username"
           aria-describedby="basic-addon1"
-          // onChange={(e) => {
-          //   setMinValue(e.target.value);
-          // }}
+          onChange={(e) => {
+            setMinValue(e.target.value);
+          }}
         />
       </div>
       <div className="input-group mb-1">
@@ -30,10 +30,10 @@ export default function PriceFilter(props) {
           type="number"
           name="max"
           className="form-control"
-          // value={maxValue}
-          // onChange={(e) => {
-          //   setMaxValue(e.target.value);
-          // }}
+          value={maxValue}
+          onChange={(e) => {
+            setMaxValue(e.target.value);
+          }}
           aria-label="Username"
           aria-describedby="basic-addon1"
         />

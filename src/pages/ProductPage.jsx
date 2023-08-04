@@ -10,6 +10,7 @@ import { getProducts } from "../util/http-get";
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
   const [filterOn, setFilterOn] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [filterBrand, setFilterBrand] = useState("");
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(0);
@@ -45,24 +46,48 @@ export default function ProductPage() {
     if (max) setMax(max);
   };
 
-  let filteredProducts;
+  //let filteredProducts;
 
   const filterReset = () => {
     console.log("filter off");
     setFilterOn(false);
   };
 
-  filteredProducts = filterBrand
-    ? products.filter((product) => product.brand === filterBrand)
-    : products;
+  // filteredProducts = filterBrand
+  //   ? products.filter((product) => product.brand === filterBrand)
+  //   : products;
 
-  filteredProducts = min
-    ? filteredProducts.filter((product) => product.price > min)
-    : filteredProducts;
+  // filteredProducts = min
+  //   ? filteredProducts.filter((product) => product.price > min)
+  //   : filteredProducts;
 
-  filteredProducts = max
-    ? filteredProducts.filter((product) => product.price < max)
-    : filteredProducts;
+  // filteredProducts = max
+  //   ? filteredProducts.filter((product) => product.price < max)
+  //   : filteredProducts;
+
+  useEffect(() => {
+    let filteredProducts = products;
+
+    if (filterBrand) {
+      filteredProducts = filteredProducts.filter(
+        (product) => product.brand === filterBrand
+      );
+    }
+
+    if (min) {
+      filteredProducts = filteredProducts.filter(
+        (product) => product.price >= min
+      );
+    }
+
+    if (max) {
+      filteredProducts = filteredProducts.filter(
+        (product) => product.price <= max
+      );
+    }
+
+    setFilteredProducts(filteredProducts);
+  }, [filterBrand, min, max]);
 
   return (
     <>
